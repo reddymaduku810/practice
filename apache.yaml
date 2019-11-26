@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-apache
+  namespace: reddy-space
+spec:
+  selector:
+    matchLabels:
+      app: apache
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: apache
+
+    spec:
+      containers:
+      - name: apache
+        image: reddy810/k8-project/apache:httpd
+        ports:
+        - containerPort: 80
